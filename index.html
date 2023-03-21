@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.6/xlsx.full.min.js"></script>
+    <title>Portfolio</title>
+</head>
+<body>
+    <!--start Hearder section-->
+    <div id="header">
+        <div class="Container">
+            <nav >
+                <h1 class="logo">Portfolio</h1>
+                <ul id="sidmenu">
+                    <li><a href="#hearder">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+                 </ul>
+                 <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+              </nav> 
+              <section class="home">
+                <div class="header-text">
+                    <h3>Hi it's Me</h3>
+                    <h1>Thirumalai</h1>
+                    <h3>And I'm a <span class="auto_type"></span></h3>
+                </div> 
+            </section>        
+            </div>
+        </div>
+     </div>
+    <!--end Hearder section-->
+
+    <!--start about section-->
+    <div id="about">
+        <div class="Container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="Thiru.jpg" >
+                </div>
+                <div class="about-col-2">
+                    <h1 class="title">About Us</h1>
+                    <p>A coding enthusiasts seeking an entry-level position in the field of web development<br>committed to write clean,efficient,and scalable code</p>
+                    <div class="titles">
+                        <p class="links active-link" onclick="opentab('Skills')">Skills</p>
+                        <p class="links" onclick="opentab('Experience')">Experience</p>
+                        <p class="links" onclick="opentab('Education')">Education</p>
+                    </div>
+                    <div class="contents active" id="Skills">
+                        <ul>
+                            <li><span>Frontend Development</span><br>Html<br>Css<br>Javascript</li>
+                            <li><span>Backend Development</span><br>Python<br>Django</li>
+                        </ul>
+                    </div>
+                    <div class="contents" id="Experience">
+                        <ul>
+                            <li><span>One Year </span><br>Hardware Testing Engineer </li>
+                        </ul>
+                        <ol>
+                            <li>Writes,edits,and debugs new hardware design for assigned projects</li>
+                            <li>Interface with suppliers and partners,from a technical and project management perspective</li>
+                            <li>provide assistance to testers and support personnel as needed to determine system problems</li>
+                        </ol>
+                    </div>
+                    <div class="contents" id="Education">
+                        <ul>
+                            <li><span>Diploma</span><br>Electronic & Communication Engineering</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end about section-->
+
+    <!--start portfolio section-->
+    <div id="portfolio">
+        <div class="Container">
+            <h1 class="title">Project & details</h1>
+            <p>Web development using html,css,javascript and their train ticket using python and database connectivity is use mongodb</p>
+            <div class="list">
+                <div class="work">
+                    <img src="lap1.png">
+                    <h4>Frontend Project</h4>
+                    <div class="details">
+                        <h3>Tokyo olympic (2020)</h3>
+                        <p>india medal overview Participants details and their medals is displayed.</p>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="lap2.png">
+                    <h4>Backend Project</h4>
+                    <div class="details">
+                        <h3>Train ticket </h3>
+                        <p>Passenger journey details and ticket details using core python.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="https://github.com/Thiru21" class="button">Project Description</a>
+    </div>
+    <!--end portfolio section-->
+
+    <!--start contact section-->
+    <div id="contact">
+        <div class="Container">
+            <div class="row">
+                <div class="left">
+                    <h1>Contact Us</h1>
+                    <p><i class="fa-sharp fa-solid fa-paper-plane"></i>thirusj@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i>+91 8637657715</p>
+                    <div class="icons">
+                        <a href="https://www.linkedin.com/in/ thiru-malai-a90070214/"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/Thiru21"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <a href="Thirumalai.C.pdf" class="buttoncv" download>Download CV</a>
+                </div>
+                <div class="right">
+                    <form id="myForm">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="Email" name="Email" placeholder="Your Email" required>
+                        <textarea name="massage" rows="5"  placeholder="Your massage"></textarea>
+                        <button type="submit" class="button1" onclick="exportToExcel()">submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end contact section-->
+    <script>
+        var links=document.getElementsByClassName("links");
+        var contents=document.getElementsByClassName("contents");
+        function opentab(tabname){
+            for(link of links){
+                link.classList.remove("active-link")
+            }
+            for(content of contents){
+                content.classList.remove("active")
+            }
+            event.currentTarget.classList.add("active-link")
+            document.getElementById(tabname).classList.add("active")
+        }
+    </script>
+    <script>
+        var sidmenu = document.getElementById("sidmenu");
+        function openmenu(){
+            sidmenu.style.right ="0";
+        }
+        function closemenu(){
+            sidmenu.style.right ="-200px";
+        }
+    </script>
+     <script>
+        function exportToExcel() {
+          var formData = new FormData(document.getElementById("myForm"));
+    
+          var wb = XLSX.utils.book_new();
+          var ws = XLSX.utils.json_to_sheet([Object.fromEntries(formData.entries())]);
+          XLSX.utils.book_append_sheet(wb, ws, "Form Data");
+          XLSX.writeFile(wb, "data.xlsx");
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+     
+    <script>
+        var typed= new Typed(".auto_type",{
+        strings: ["Frontend Developer", "Python full stack developer"],
+        typeSpeed:100,
+        backSpeed:100,
+        backDelay:1000,
+        loop:true
+    })
+    </script>
+</body>
+</html>
